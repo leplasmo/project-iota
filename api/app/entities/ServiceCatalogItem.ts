@@ -1,30 +1,29 @@
 /** @format */
 
-import { getModelForClass, prop as Property } from "@typegoose/typegoose";
+import { getModelForClass, prop as Property } from '@typegoose/typegoose';
 import { ObjectId } from 'mongodb';
-import { Field, ID, Int, ObjectType } from "type-graphql";
-import { Ref } from "../types";
-import { User } from "./User";
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Ref } from '../types';
+import { User } from './User';
 
-@ObjectType({ description: "The Service Catalog Items" })
+@ObjectType({ description: 'The Service Catalog Items' })
 export class ServiceCatalogItem {
-
   @Field(() => ID!)
   readonly _id: ObjectId;
 
   @Field()
-  @Property({required: true})
-  name: String;
+  @Property({ required: true })
+  name: string;
 
   @Field()
-  @Property({required: true})
-  description: String;
+  @Property({ required: true })
+  description: string;
 
-  @Field((_type) => Int, {nullable: true})
+  @Field((_type) => Int, { nullable: true })
   @Property()
   serviceNumber: number;
 
-  @Field((_type) => Int, {nullable: true})
+  @Field((_type) => Int, { nullable: true })
   @Property()
   price: number;
 

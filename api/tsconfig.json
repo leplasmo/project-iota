@@ -22,11 +22,14 @@
     "strict": false,
     "experimentalDecorators": true,
     "outDir": "dist",
-    "rootDir": "app",
+    "rootDir": "./app",
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*", "app/types/*"]
-    }
+      "*": ["node_modules/*", "./types/*"]
+    },
+    "types": ["jest", "node"],
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["app/**/*", "./app/**/*.ts", "./app/**/*.tsx"]
+  "include": ["app/**/*", "./app/**/*.ts", "./app/**/*.tsx"],
+  "exclude": ["app/**/bak/*.ts", "**/*.spec.ts"]
 }

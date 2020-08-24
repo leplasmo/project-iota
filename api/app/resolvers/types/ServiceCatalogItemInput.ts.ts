@@ -1,26 +1,25 @@
 /** @format */
 
-import { Length } from "class-validator";
-import { ObjectId } from "mongodb";
-import { Field, InputType } from "type-graphql";
-import { ServiceCatalogItem } from "../../entities/ServiceCatalogItem";
+import { Length } from 'class-validator';
+import { ObjectId } from 'mongodb';
+import { Field, InputType } from 'type-graphql';
+import { ServiceCatalogItem } from '../../entities/ServiceCatalogItem';
 
 @InputType()
 export class ServiceCatalogItemInput implements Partial<ServiceCatalogItem> {
-
   @Field()
-  name: String;
+  name: string;
 
   @Field()
   @Length(1, 255)
-  description: String;
+  description: string;
 
-  @Field({ nullable: true})
+  @Field({ nullable: true })
   serviceNumber?: number;
 
-  @Field({ nullable: true})
+  @Field({ nullable: true })
   price?: number;
 
-  @Field(() => String, {nullable: true})
+  @Field(() => String, { nullable: true })
   lead?: ObjectId;
 }

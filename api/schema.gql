@@ -41,7 +41,6 @@ input ServiceCatalogItemInput {
 """The User model"""
 type User {
   _id: ID!
-  cart: ServiceCatalogItem!
   createdServices: [ServiceCatalogItem!]!
   email: String!
   username: String!

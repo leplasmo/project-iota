@@ -2,13 +2,11 @@
 import { ObjectId } from 'mongodb';
 import {
   Arg,
-  FieldResolver,
+
   Mutation,
   Query,
-  Resolver,
-  Root
+  Resolver
 } from "type-graphql";
-import { ServiceCatalogItem, ServiceCatalogItemModel } from "../entities/ServiceCatalogItem";
 import { User, UserModel } from "../entities/User";
 import { ObjectIdScalar } from '../object-id.scalar';
 import { UserInput } from "./types/UserInput";
@@ -35,7 +33,7 @@ export class UserResolver {
     try {
       const newUser = new UserModel({
         ...userInput
-      } as User);
+      } as unknown as User);
       
       await newUser.save();
       return newUser;
@@ -52,9 +50,9 @@ export class UserResolver {
     return true;
   }
 
-  @FieldResolver((_type) => ServiceCatalogItem)
-  async cart(@Root() user: User): Promise<ServiceCatalogItem> {
-    console.log(user, "user!");
-    return (await ServiceCatalogItemModel.findById(user._doc.cart_id))!;
-  }
+  // @FieldResolver((_type) => [ServiceCatalogItem])
+  // async createdServices(@Root() user: User): Promise<ServiceCatalogItem[]> {
+  //   console.log(user, "user!");
+  //   return (await ServiceCatalogItemModel.findById(user._doc.createdServices))!;
+  // }
 }

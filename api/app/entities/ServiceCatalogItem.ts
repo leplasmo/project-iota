@@ -29,7 +29,16 @@ export class ServiceCatalogItem {
 
   @Field((_type) => User)
   @Property({ ref: User, required: true })
+  owner: Ref<User>;
+
+  @Field((_type) => User)
+  @Property({ ref: User, required: true })
   lead: Ref<User>;
+
+  @Field((_type) => User)
+  @Property({ ref: User })
+  deputyLead: Ref<User>;
+
   _doc: any;
 }
 

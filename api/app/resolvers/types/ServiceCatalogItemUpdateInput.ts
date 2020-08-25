@@ -5,14 +5,15 @@ import { ObjectId } from 'mongodb';
 import { Field, InputType, Int } from 'type-graphql';
 import { ServiceCatalogItem } from '../../entities/ServiceCatalogItem';
 
+// for updates, all fields are optional
 @InputType()
-export class ServiceCatalogItemInput implements Partial<ServiceCatalogItem> {
-  @Field(() => String)
-  name: string;
+export class ServiceCatalogItemUpdateInput implements Partial<ServiceCatalogItem> {
+  @Field(() => String, { nullable: true })
+  name?: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   @Length(1, 255)
-  description: string;
+  description?: string;
 
   @Field(() => Int, { nullable: true })
   serviceNumber?: number;

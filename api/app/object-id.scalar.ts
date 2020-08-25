@@ -1,11 +1,11 @@
 /** @format */
 
-import { GraphQLScalarType, Kind } from "graphql";
-import { ObjectId } from "mongodb";
+import { GraphQLScalarType, Kind } from 'graphql';
+import { ObjectId } from 'mongodb';
 
 export const ObjectIdScalar = new GraphQLScalarType({
-  name: "ObjectId",
-  description: "Mongo object id scalar type",
+  name: 'ObjectId',
+  description: 'Mongo object id scalar type',
   parseValue(value: string) {
     return new ObjectId(value); // value from the client input variables
   },

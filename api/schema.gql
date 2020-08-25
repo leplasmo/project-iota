@@ -8,6 +8,7 @@ type Mutation {
   addUser(data: UserInput!): User!
   deleteUser(id: String!): Boolean!
   removeServiceCatalogItem(id: ObjectId!): Boolean!
+  updateServiceCatalogItem(data: ServiceCatalogItemUpdateInput!, id: ObjectId!): ServiceCatalogItem!
 }
 
 """Mongo object id scalar type"""
@@ -23,31 +24,52 @@ type Query {
 """The Service Catalog Items"""
 type ServiceCatalogItem {
   _id: ID!
+  deputyLead: User!
   description: String!
   lead: User!
   name: String!
+  owner: User!
   price: Int
   serviceNumber: Int
 }
 
 input ServiceCatalogItemInput {
+  deputyLead: String
   description: String!
   lead: String
   name: String!
-  price: Float
-  serviceNumber: Float
+  owner: String
+  price: Int
+  serviceNumber: Int
+}
+
+input ServiceCatalogItemUpdateInput {
+  deputyLead: String
+  description: String
+  lead: String
+  name: String
+  owner: String
+  price: Int
+  serviceNumber: Int
 }
 
 """The User model"""
 type User {
   _id: ID!
+  avatar: String!
   createdServices: [ServiceCatalogItem!]!
   email: String!
+  firstName: String!
+  lastName: String!
+  tokenVersion: String!
   username: String!
 }
 
 input UserInput {
+  avatar: String
   createdServices: [String!]
   email: String!
+  firstName: String!
+  lastName: String!
   username: String!
 }
